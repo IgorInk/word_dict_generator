@@ -24,7 +24,7 @@ def product(*args, repeat=1):
     for pool in pools:
         result = [x + [y] for x in result for y in pool]
         res_2.extend(filter(lambda x:len("".join(x)) == repeat,result))
-        print(result)
+        # print(result)
     for prod in res_2:
         yield tuple(prod)
 
@@ -59,7 +59,7 @@ def generate_psw(txt: tk.Text, left=8, right=8, pb=None):
         if os.name == 'posix':
                 os.system(f'cat {os.path.join(dict_dir.get(),filename.get())}')
         else:
-            os.system('notepad.exe {os.path.join(dict_dir.get(),filename.get())}')
+            os.system(f'notepad.exe {os.path.join(dict_dir.get(),filename.get())}')
 
     # msg.showinfo('dict gen', f'dict has been generated!\n {inx} rows')
 
