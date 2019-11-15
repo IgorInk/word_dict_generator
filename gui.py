@@ -1,10 +1,16 @@
-import tkinter as tk
-import tkinter.messagebox as msg
-import threading
-import tkinter.ttk
-import tkinter.filedialog as filedlg
-import os
-import os.path
+
+try:
+    import tkinter as tk
+    import tkinter.messagebox as msg
+    import threading
+    import tkinter.ttk
+    import tkinter.filedialog as filedlg
+    import os
+    import os.path
+except ModuleNotFoundError as e:
+    print(f'please install the molule:{e.name}\ntry to type "pip install {e.name}" or similar')
+    exit(1)
+
 
 
 TITLE = 'WORD DICTIONARY GENERATOR'
@@ -15,6 +21,7 @@ dict_dir = tk.StringVar()
 dict_dir.set(os.getcwd())
 filename = tk.StringVar()
 filename.set('dict.txt')
+
 
 
 def product(*args, repeat=1):
@@ -69,7 +76,7 @@ def create_menu(txt:tk.Text,root:tk.Tk):
     file_menu = tk.Menu(menu_panel,tearoff=0)
     menu_panel.add_cascade(label='File',menu=file_menu)
     menu_panel.add_command(label='info',
-                           command=lambda : msg.showinfo(title=TITLE_SHORT,message='Add symbols and words in editor.\nChoose generated words length.\n Select file directory and namto save words.\nStart or start in background.\nSevVetApps no rights reserved:)'))
+                           command=lambda : msg.showinfo(title=TITLE_SHORT,message='Add symbols and words in editor.\nChoose generated words length.\n Select file directory and name to save words.\nClick "start" or "start in background" button.\n\nSevVetApps no rights reserved:)'))
     menu_panel.add_command(label='example',command = lambda :show_example(txt,root))
     file_menu.add_command(label='choose dict directory', command=lambda :dict_dir.set(filedlg.askdirectory(initialdir=os.getcwd())))
 
